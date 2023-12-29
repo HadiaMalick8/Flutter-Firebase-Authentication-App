@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:heyflutter_test_task/features/auth/controllers/sign_up_controller.dart';
 
 import '../features/auth/model/user.dart';
 
@@ -24,10 +25,11 @@ class AuthService {
   Future<void> createUser(UserModel user, BuildContext context) async {
     try {
       await _db.collection("Users").add(user.toJson());
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: user.email,
         password: user.password,
       );
+      Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('User added successfully'),
@@ -50,6 +52,7 @@ class AuthService {
         email: email,
         password: password,
       );
+      Navigator.pop(context);
     } catch (e) {
       if (e is FirebaseAuthException) {
         if (e.code == 'user-not-found') {
