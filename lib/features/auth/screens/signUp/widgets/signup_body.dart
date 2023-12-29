@@ -84,8 +84,8 @@ class _SignUpBodyState extends State<SignUpBody> {
             registerUser(
               context,
               signupController.nameController.text.trim(),
-              signupController.passwordController.text.trim(),
               signupController.emailController.text.trim(),
+              signupController.passwordController.text.trim(),
             );
           },
           text: agreeAndContinue,
