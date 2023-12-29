@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "565119861521",
+    "project_id": "test-task-aad45",
+    "storage_bucket": "test-task-aad45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565119861521:android:4b501542d892d8dc4002b0",
+        "android_client_info": {
+          "package_name": "com.example.heyflutter_test_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQOg7o6DLY6rm-G7U43To-hnf17QRCMkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

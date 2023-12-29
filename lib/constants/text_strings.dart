@@ -1,0 +1,22 @@
+const String welcomeText = "Hi!";
+const String email = "Email";
+const String name = "Name";
+const String password = "Password";
+const String continueText = "Continue";
+const String or = "or";
+const String contWithFb = "Continue with Facebook";
+const String contWithGoogle = "Continue with Google";
+const String contWithApple = "Continue with Apple";
+const String noAccount = "Don't have an account?";
+const String signUp = "Sign up!";
+const String login = "Login";
+const String forgetPassword = "Forgot your password?";
+const String signUpStarting = "Looks like you don't have an account. \nLet's create an account for";
+const String termText = "By selecting Agree and continue below, I agree to ";
+const String termsPolicy = "Terms of Service and Privacy Policy";
+const String agreeAndContinue = "Agree And Continue";
+const String view = "View";
+const String hide = "Hide";
+
+const String userName = "Jane Dow";
+const String userEmail = "jane.doe@gmail.com";
