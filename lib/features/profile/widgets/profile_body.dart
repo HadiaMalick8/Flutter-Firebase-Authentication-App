@@ -18,14 +18,13 @@ class _ProfileBodyState extends State<ProfileBody> {
   final user = FirebaseAuth.instance.currentUser;
   AuthService authService = AuthService();
 
-  getUserData(){
+  getUserData() {
     final email = user?.email;
     print(email);
-      return authService.getUserDetails(email!);
+    return authService.getUserDetails(email!);
   }
+
   void signOut(BuildContext context) {
-    SignupController signupController = SignupController();
-    signupController.dispose();
     FirebaseAuth.instance.signOut();
   }
 
@@ -33,9 +32,9 @@ class _ProfileBodyState extends State<ProfileBody> {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: getUserData(),
-      builder: (context, snapshot){
-        if(snapshot.connectionState == ConnectionState.done){
-          if(snapshot.hasData){
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasData) {
             UserModel userData = snapshot.data as UserModel;
             return Column(
               children: [
@@ -45,8 +44,18 @@ class _ProfileBodyState extends State<ProfileBody> {
                 ),
                 Row(
                   children: [
-                    Text('Name: ', style: bodyText1.copyWith(fontWeight: FontWeight.bold),),
-                    Expanded(child: Center(child: Text(userData.name,style: bodyText1,)),),
+                    Text(
+                      'Name: ',
+                      style: bodyText1.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          userData.name,
+                          style: bodyText1,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(
@@ -54,8 +63,17 @@ class _ProfileBodyState extends State<ProfileBody> {
                 ),
                 Row(
                   children: [
-                    Text('Email Address: ', style: bodyText1.copyWith(fontWeight: FontWeight.bold),),
-                    Expanded(child: Center(child: Text(userData.email,style: bodyText1,)),),
+                    Text(
+                      'Email: ',
+                      style: bodyText1.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Expanded(
+                      child: Center(
+                          child: Text(
+                        userData.email,
+                        style: bodyText1,
+                      )),
+                    ),
                   ],
                 ),
                 const SizedBox(
@@ -71,13 +89,21 @@ class _ProfileBodyState extends State<ProfileBody> {
                 ),
               ],
             );
-          } else if(snapshot.hasError){
-            return Center(child: Text(snapshot.error.toString(),),);
-          } else{
-            return const Center(child: Text('Something went wrong'),);
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                snapshot.error.toString(),
+              ),
+            );
+          } else {
+            return const Center(
+              child: Text('Something went wrong'),
+            );
           }
         } else {
-          return const Center(child: CircularProgressIndicator(),);
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
       },
     );
