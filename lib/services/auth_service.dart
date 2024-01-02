@@ -31,11 +31,11 @@ class AuthService {
   //REGISTER
   Future<void> createUser(UserModel user, BuildContext context) async {
     try {
-      await _db.collection("Users").add(user.toJson());
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: user.email,
         password: user.password,
       );
+      await _db.collection("Users").add(user.toJson());
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
