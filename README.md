@@ -1,6 +1,18 @@
 # heyflutter_test_task
 
-A new Flutter project.
+Flutter Firebase Authentication App.
+
+## Overview
+
+This Flutter app exemplifies a robust authentication system using Firebase Auth and Firestore. The app encompasses four key screens:
+
+1. **Welcome Screen:** Intelligently checks whether the user's email already exists. If so, it seamlessly redirects to the Login Screen; otherwise, it guides the user to the Signup Screen.
+2. **Login Screen:** Ensures secure user authentication through Firebase.
+3. **Signup Screen:** Facilitates the creation of new accounts using Firebase authentication.
+4. **User Profile Screen:** Presents user details fetched from Firestore.
+
+Explore the codebase to observe the efficient integration of Flutter with Firebase for user authentication and data storage. Your insights and feedback are highly appreciated!
+
 
 ## Getting Started
 
