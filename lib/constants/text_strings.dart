@@ -17,6 +17,3 @@ const String termsPolicy = "Terms of Service and Privacy Policy";
 const String agreeAndContinue = "Agree And Continue";
 const String view = "View";
 const String hide = "Hide";
-
-const String userName = "Jane Dow";
-const String userEmail = "jane.doe@gmail.com";
