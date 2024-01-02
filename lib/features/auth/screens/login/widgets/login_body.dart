@@ -16,6 +16,14 @@ class LoginBody extends StatelessWidget {
     SignupController signupController = Provider.of<SignupController>(context, listen: false);
     AuthService authService = AuthService();
 
+    void loginUser(){
+      authService.signIn(
+        context,
+        signupController.emailController.text.trim(),
+        signupController.passwordController.text.trim(),
+      );
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -28,9 +36,22 @@ class LoginBody extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  signupController.nameController.text.trim(),
-                  style: bodyText1.copyWith(fontWeight: FontWeight.bold),
+                FutureBuilder<String>(
+                  future: authService.getUserNameByEmail(signupController.emailController.text.trim()),
+                  builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else if (snapshot.hasData) {
+                      return Text(
+                        snapshot.data!,
+                        style: bodyText1.copyWith(fontWeight: FontWeight.bold),
+                      );
+                    } else {
+                      return const Text('User not found.');
+                    }
+                  },
                 ),
                 Text(
                   signupController.emailController.text.trim(),
@@ -53,13 +74,7 @@ class LoginBody extends StatelessWidget {
         ),
         MyButton(
           text: login,
-          onTap: () {
-            authService.signIn(
-              context,
-              signupController.emailController.text.trim(),
-              signupController.passwordController.text.trim(),
-            );
-          },
+          onTap: loginUser,
           color: hPrimaryColor,
           textColor: hWhite,
         ),
