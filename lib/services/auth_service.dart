@@ -21,6 +21,13 @@ class AuthService {
     }
   }
 
+  Future<String> getUserNameByEmail(String email) async {
+    CollectionReference users = _db.collection('Users');
+    QuerySnapshot querySnapshot = await users.where('Email', isEqualTo: email).get();
+    var name = querySnapshot.docs[0].get('Name');
+    return name;
+  }
+
   //REGISTER
   Future<void> createUser(UserModel user, BuildContext context) async {
     try {
